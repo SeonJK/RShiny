@@ -1,4 +1,4 @@
 library(shiny)
+library(shinydashboard)
 
-shinyApp(ui = ui.R, server = server.R)
-
+runApp("D:/git/Rshiny/ShinyProject")
