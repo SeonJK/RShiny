@@ -56,28 +56,28 @@ server <- function(input, output) {
     # Input: Checkbox if file has header ----
     checkboxInput("header", "Header", TRUE)
   })
-  # 
-  # output$inputradio <- renderMenu({
-  #   # Input: Select separator ----
-  #   radioButtons("sep", "Separator",
-  #                choices = c(Comma = ",",
-  #                            Semicolon = ";",
-  #                            Tab = "\t"),
-  #                selected = ",")
-  #   
-  #   # Input: Select quotes ----
-  #   radioButtons("quote", "Quote",
-  #                choices = c(None = "",
-  #                            "Double Quote" = '"',
-  #                            "Single Quote" = "'"),
-  #                selected = '"')
-  # })
-  # 
-  # output$inputnumber <- renderMenu({
-  #   # Input: Select number of rows to display ----
-  #   radioButtons("disp", "Display",
-  #                choices = c(Head = "head",
-  #                            All = "all"),
-  #                selected = "head")
-  # })
+
+  output$inputradio <- renderMenu({
+    # Input: Select separator ----
+    radioButtons("sep", "Separator",
+                 choices = c(Comma = ",",
+                             Semicolon = ";",
+                             Tab = "\t"),
+                 selected = ",")
+
+    # Input: Select quotes ----
+    radioButtons("quote", "Quote",
+                 choices = c(None = "",
+                             "Double Quote" = '"',
+                             "Single Quote" = "'"),
+                 selected = '"')
+  })
+
+  output$inputnumber <- renderMenu({
+    # Input: Select number of rows to display ----
+    radioButtons("disp", "Display",
+                 choices = c(Head = "head",
+                             All = "all"),
+                 selected = "head")
+  })
 }

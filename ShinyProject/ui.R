@@ -17,8 +17,8 @@ ui <- dashboardPage(
         sidebarMenu(
             # menuItem("HOME", tabName="home", icon = icon("home")),
             # menuItem("CHART", tabname="chart", icon =icon("chart-line"))
-            menuItemOutput("inputfile"),
-            menuItemOutput("inputchkbox"),
+            menuItemOutput("inputfile")
+            # menuItemOutput("inputchkbox"),
             # menuItemOutput("inputradio"),
             # menuItemOutput("inputnumber"),
         )
