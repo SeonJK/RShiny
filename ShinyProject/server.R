@@ -3,14 +3,6 @@ library(shinydashboard)
 
 server <- function(input, output) {
   
-  set.seed(122)
-  histdata <- rnorm(500)
-  
-  output$plot1 <- renderPlot({
-    data <- histdata[seq_len(input$slider)]
-    hist(data)
-  })
-  
   output$contents <- renderTable({
     
     # input$file1 will be NULL initially. After the user selects
@@ -43,41 +35,42 @@ server <- function(input, output) {
     
   })
   
-  output$inputfile <- renderMenu({
+  #Input systems in Sidebar
+  output$menu <- renderMenu({
+    sidebarMenu(
     # Input: Select a file ----
     fileInput("file1", "Choose CSV File",
               multiple = FALSE,
               accept = c("text/csv",
                          "text/comma-separated-values,text/plain",
-                         ".csv"))
-  })
-  
-  output$inputchkbox <- renderMenu({
-    # Input: Checkbox if file has header ----
-    checkboxInput("header", "Header", TRUE)
-  })
+                         ".csv")),
+    
+    tags$hr(),
 
-  output$inputradio <- renderMenu({
+    # Input: Checkbox if file has header ----
+    checkboxInput("header", "Header", TRUE),
+
     # Input: Select separator ----
     radioButtons("sep", "Separator",
                  choices = c(Comma = ",",
                              Semicolon = ";",
                              Tab = "\t"),
-                 selected = ",")
+                 selected = ","),
 
     # Input: Select quotes ----
     radioButtons("quote", "Quote",
                  choices = c(None = "",
                              "Double Quote" = '"',
                              "Single Quote" = "'"),
-                 selected = '"')
-  })
-
-  output$inputnumber <- renderMenu({
+                 selected = '"'),
+    
+    tags$hr(),
+    
     # Input: Select number of rows to display ----
     radioButtons("disp", "Display",
                  choices = c(Head = "head",
                              All = "all"),
                  selected = "head")
-  })
+      )
+    })
 }
